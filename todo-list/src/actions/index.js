@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, FILTER_TODOS, UPDATE_PRIORITY, UPDATE_STATE } from "./types";
+import { ADD_TODO, DELETE_TODO, FILTER_TODOS, SET_PAGE, UPDATE_PRIORITY, UPDATE_STATE } from "./types";
 
 let todoId = 0
 
@@ -17,6 +17,12 @@ export function addTodo (todo) {
 export function deleteTodo (payload) {
     return {
         type: DELETE_TODO,
+        payload
+    }
+}
+export function setPage (payload) {
+    return {
+        type: SET_PAGE,
         payload
     }
 }

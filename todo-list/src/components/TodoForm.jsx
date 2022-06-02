@@ -41,6 +41,7 @@ const handleSubmit = (e) => {
                     <h3>Crear Una Tarea:</h3>
                     <div className={s.titleDiv}>
                     <input
+                        maxLength={20}
                         name="title"
                         type="text"
                         placeholder="Título..."

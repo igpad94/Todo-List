@@ -1,4 +1,10 @@
 .cardsContainer {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardsSubContainer {
+    display: flex;
     flex-direction: row;
 }

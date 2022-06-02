@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch }  from "react-redux";
-import { filterTodos } from "../actions";
+import { filterTodos, setPage } from "../actions";
 import Select from "./Select";
 
 import s from './styles/TodoList.module.css';
@@ -25,6 +25,7 @@ const handleChange = (e) => {
     dispatch(filterTodos({  
         ...filter,
         [e.target.name]: e.target.value}))
+    dispatch(setPage(1))
     
 };
 

@@ -1,8 +1,9 @@
-import { ADD_TODO, DELETE_TODO, FILTER_TODOS, UPDATE_PRIORITY, UPDATE_STATE } from "../actions/types";
+import { ADD_TODO, DELETE_TODO, FILTER_TODOS, SET_PAGE, UPDATE_PRIORITY, UPDATE_STATE } from "../actions/types";
 
 const initialState = {
     todos: [],
-    filteredTodos: []
+    filteredTodos: [],
+    currentPage: 1
 }
 
 export default function rootReducer(state = initialState, action){
@@ -21,21 +22,54 @@ export default function rootReducer(state = initialState, action){
                 filteredTodos: state.filteredTodos.filter((t) => t.id !== action.payload)
             };
         case UPDATE_STATE: 
-            return {
-                ...state,
-                todos: state.todos.map(e => e.id === action.payload.id ? e.state = action.payload.state : null),
-                filteredTodos: state.filteredTodos.map(e => e.id === action.payload.id ? e.state = action.payload.state : null)
-            };
+        const oldState = state.todos
+        const filteredOldState = state.filteredTodos
+        const updatedState = oldState.map(t => {
+        if (t.id === action.payload.id) {
+          return {...t, state: action.payload.state};
+        }
+        return t;
+      });
+        const updatedFilteredState = filteredOldState.map(t => {
+        if (t.id === action.payload.id) {
+          return {...t, state: action.payload.state};
+        }
+        return t;
+      });
+        return {
+            ...state,
+            todos: updatedState,
+            filteredTodos: updatedFilteredState
+        };
         case UPDATE_PRIORITY: 
+            const oldPriority = state.todos
+            const filteredOldPriority = state.filteredTodos
+            const updatedPriority = oldPriority.map(t => {
+            if (t.id === action.payload.id) {
+              return {...t, priority: action.payload.priority};
+            }
+            return t;
+          });
+            const updatedFilteredPriority = filteredOldPriority.map(t => {
+            if (t.id === action.payload.id) {
+              return {...t, priority: action.payload.priority};
+            }
+            return t;
+          });
             return {
                 ...state,
-                todos: state.todos.map(e => e.id === action.payload.id ? e.priority = action.payload.priority : null),
-                filteredTodos: state.filteredTodos.map(e => e.id === action.payload.id ? e.priority = action.payload.priority : null)
+                todos: updatedPriority,
+                filteredTodos: updatedFilteredPriority
             };
         case FILTER_TODOS: 
             return {
                 ...state,
                 filteredTodos: state.todos.filter((t) => t.priority.includes(action.payload.priority) && t.state.includes(action.payload.state))
+            };
+        case SET_PAGE: 
+            return {
+                ...state,
+                currentPage: action.payload
             };
         default: 
         return state;

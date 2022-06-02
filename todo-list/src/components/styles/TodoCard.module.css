@@ -1,7 +1,7 @@
 .card {
     margin: 20px;
     padding: 10px;
-    width: 18rem;
+    width: 20rem;
     height: 18rem;
     border-radius: 5%;
     background-color: rgba(240, 230, 217, 0.781);
@@ -28,10 +28,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .description {
     text-align: justify;
+    white-space: pre-line;
+    word-wrap: break-word
 }
 
 .buttonX {
@@ -42,7 +45,7 @@
     border-width: 1px;
     border-radius: 5px;
 }
-.buttonX:hover {
+.buttonX:hover, .nextButton:hover {
     background-color: rgba(239, 229, 215, 0.897);
     cursor: pointer;
     border: 2px solid rgb(104, 57, 13);
@@ -51,4 +54,13 @@
 .subtitle {
     font-weight: bold;
 }
-  
+
+.nextButton {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(239, 221, 198, 0.781);
+    color: rgb(104, 57, 13);
+    border-radius: 18px;
+    border-width: 1px;
+}
+
