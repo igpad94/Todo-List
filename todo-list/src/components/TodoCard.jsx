@@ -1,6 +1,6 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-import { deleteTodo, updatePriority, updateState } from "../actions"
+import { deleteTodo, setPage, updatePriority, updateState } from "../actions"
 import s from './styles/TodoCard.module.css';
 
 export default function TodoCard ({description, title, state, priority, id}) {
@@ -10,6 +10,7 @@ const dispatch = useDispatch()
 
 const handleDelete = (id) => {
     dispatch(deleteTodo(id))
+    dispatch(setPage(1))
 }
 
 const handleState = (id, state) => {
