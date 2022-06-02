@@ -1,0 +1,13 @@
+body {
+    background-color: rgba(249, 244, 237, 0.758);
+}
+
+.appContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column
+}
+
+p , h3{
+    color: rgb(104, 57, 13);
+}
